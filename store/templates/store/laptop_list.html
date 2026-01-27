@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Laptops Online</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="/">💻 LAPTOP CLINIC</a>
+
+        <form class="d-flex mx-auto w-50">
+            <input class="form-control me-2" type="search" placeholder="Search laptops...">
+            <button class="btn btn-warning">Search</button>
+        </form>
+
+        <div>
+            <a href="#" class="text-white me-3 text-decoration-none">Login</a>
+            <a href="#" class="text-white text-decoration-none">Cart 🛒</a>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="container-fluid mt-4">
+    <div class="row">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="col-md-3">
+            <div class="card shadow-sm p-3">
+                <h5 class="fw-bold">Filters</h5>
+                <hr>
+
+                <p class="fw-semibold">Availability</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">In Stock</label>
+                </div>
+
+                <hr>
+
+<p class="fw-semibold">Price</p>
+
+<!-- Display the price range -->
+<p>13000 - 150000</p>
+
+<!-- Range slider -->
+<input type="range" class="form-range" min="13000" max="150000" step="1000">
+
+<hr>
+
+
+                <p class="fw-semibold">Brand</p>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">Asus</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">HP</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">Dell</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">Lenovo</label>
+                </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">Acer</label>
+                </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">MSI</label>
+                </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">Razer</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox">
+                    <label class="form-check-label">Apple</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="col-md-9">
+
+            <!-- TITLE -->
+            <div class="bg-white p-4 mb-4 shadow-sm rounded">
+                <h3 class="fw-bold">Buy Laptops Online at Best Prices in Kenya</h3>
+                <p class="text-muted mb-0">
+                    Shop quality laptops from trusted brands at unbeatable prices.
+                </p>
+            </div>
+
+            <!-- PRODUCTS GRID -->
+            <div class="row">
+
+                {% for laptop in laptops %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+
+                        {% if laptop.image %}
+                        <img src="{{ laptop.image.url }}"
+                             class="card-img-top p-3"
+                             style="height:200px; object-fit:contain;">
+                        {% else %}
+                        <div class="text-center p-5 text-muted">
+                            No Image
+                        </div>
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h6 class="fw-semibold">{{ laptop.name }}</h6>
+
+                            <p class="small text-muted mb-2">
+                                {{ laptop.processor }} • {{ laptop.ram }}GB RAM • {{ laptop.storage }}
+                            </p>
+
+                            <h5 class="text-success fw-bold">
+                                KSh {{ laptop.price }}
+                            </h5>
+                        </div>
+
+                        <div class="card-footer bg-white border-0 text-center">
+                            <a href="{% url 'laptop_detail' laptop.id %}"
+                               class="btn btn-outline-dark btn-sm w-100">
+                                View Details
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-center text-muted">No laptops available.</p>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
