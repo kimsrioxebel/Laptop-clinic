@@ -30,3 +30,18 @@ a:hover {
     color: green;
     font-weight: bold;
 }
+body {
+    background-color: #f8f9fa;
+}
+
+h2 {
+    letter-spacing: 0.5px;
+}
+
+.card img {
+    transition: transform 0.4s ease;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
